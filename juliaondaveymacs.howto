@@ -1,0 +1,24 @@
+Background:
+===========
+
+The Mac OS X computers in Davey have two compilers installed, 'gcc' and 'llvm'.
+On these computers gcc is configured to compile 32-bit binaries, while llvm is
+configured for 64-bit binaries.
+
+Now, when comiling julia, julia uses 'clang' which is part of llvm to compile
+the source code, but then uses 'gfortran' to link the object files together.
+gfortran is part of gcc, and on the department computers it doesn't understand
+the 64-bit object files created by clang.
+
+
+Solution:
+=========
+
+The solution is simple: Tell julia to link using the fortran compiler from
+llvm, which on my computer is installed as
+"x86_64-apple-darwin12-gfortran-mp-4.5" by setting the 'FC' environment
+variable, like so
+
+    $ make FC=x86_64-apple-darwin12-gfortran-mp-4.5
+
+Then wait and be happy.
