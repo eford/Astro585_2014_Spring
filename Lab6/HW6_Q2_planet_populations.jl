@@ -95,7 +95,7 @@ function compute_stats(data_obs::Array)
   logP = log10(data_obs)
   mean_logP = (N>=1) ? mean(logP) : 0.0
   stddev_logP = (N>=2) ? std(logP) : 0.0
-  skewness_logP = (N>=3) ? Stats.skewness(logP) : 0.0
+  skewness_logP = (N>=3) ? skewness(logP) : 0.0
   return [N, mean_logP, stddev_logP, skewness_logP] 
 end
 
