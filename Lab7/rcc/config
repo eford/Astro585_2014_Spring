@@ -1,0 +1,7 @@
+Host rcc *.rcc.psu.edu localhost lion* hammer* tesla* cyberstar* biostar*
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+    BatchMode yes
+#    IdentityFile /gpfs/home/ebf11/.ssh/ida_dsa_rcc
+
+
