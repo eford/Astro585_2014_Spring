@@ -130,20 +130,20 @@ end
 
 function eval_model_on_grid_loops(etas::Array, shapes::Array, scales::Array, num_stars = 1600; num_evals = 1, 
                             true_eta = 0.2, true_shape = 0.1, true_scale = 1.0)
-const solar_radius_in_AU = 0.00464913034
-minP = (2.0*solar_radius_in_AU)^1.5
-maxP = 4*days_in_year/3
-data_obs = generate_transiting_planet_sample(true_eta, true_shape, true_scale, num_stars; minP=minP, maxP=4*days_in_year/3)
-stats_obs = compute_stats(data_obs)
+  const solar_radius_in_AU = 0.00464913034
+  minP = (2.0*solar_radius_in_AU)^1.5
+  maxP = 4*days_in_year/3
+  data_obs = generate_transiting_planet_sample(true_eta, true_shape, true_scale, num_stars; minP=minP, maxP=4*days_in_year/3)
+  stats_obs = compute_stats(data_obs)
 
-dist = Array(Float64,(length(etas), length(shapes), length(scales) ) )
-for k in 1:length(scales)
+  dist = Array(Float64,(length(etas), length(shapes), length(scales) ) )
+  for k in 1:length(scales)
     for j in 1:length(shapes)
-        for i in 1:length(etas)
-            dist[i,j,k] = evaluate_model(stats_obs, etas[i], shapes[j], scales[k], num_stars; minP=minP, maxP=maxP, num_evals=num_evals )
-        end # for i
+      for i in 1:length(etas)
+        dist[i,j,k] = evaluate_model(stats_obs, etas[i], shapes[j], scales[k], num_stars; minP=minP, maxP=maxP, num_evals=num_evals )
+      end # for i
     end # for j
-end # for k
-dist
+  end # for k
+  dist
 end # function
 
