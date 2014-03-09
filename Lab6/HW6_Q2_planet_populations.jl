@@ -136,9 +136,9 @@ maxP = 4*days_in_year/3
 data_obs = generate_transiting_planet_sample(true_eta, true_shape, true_scale, num_stars; minP=minP, maxP=4*days_in_year/3)
 stats_obs = compute_stats(data_obs)
 
-dist = Array(Float64,(length(etas), length(scales), length(shapes) ) )
-for k in 1:length(shapes)
-    for j in 1:length(scales)
+dist = Array(Float64,(length(etas), length(shapes), length(scales) ) )
+for k in 1:length(scales)
+    for j in 1:length(shapes)
         for i in 1:length(etas)
             dist[i,j,k] = evaluate_model(stats_obs, etas[i], shapes[j], scales[k], num_stars; minP=minP, maxP=maxP, num_evals=num_evals )
         end # for i
