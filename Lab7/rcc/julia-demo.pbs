@@ -12,7 +12,8 @@
 # however the PBS system uses lines begining with #PBS to decide how it should treat your job
 
 module load git            # to put git in path
-module load julia          # to put julia in path
+# module load julia          # to put julia in path
+module load julia090314    # to put julia in path and use version that fixes Distributions issue
 
 cd $PBS_O_WORKDIR          # change into same directory as job was submitted from
 
